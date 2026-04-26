@@ -27,6 +27,8 @@ jobs:
 
       - name: Upload the artifacts to the runner
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
   
   deploy:
     runs-on: ubuntu-latest
@@ -34,5 +36,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{steps.deployment.outputs.page_url}}
-    uses: actions/deploy-pages@v4
+      steps:
+        - name: Deploying to pages
+          id: deployment
+          uses: actions/deploy-pages@v4
         
