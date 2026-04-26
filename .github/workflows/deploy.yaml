@@ -33,6 +33,6 @@ jobs:
     needs: build
     environment:
       name: github-pages
-      url: ${{steps.deployment.outputs.page url}}
+      url: ${{steps.deployment.outputs.page_url}}
     uses: actions/deploy-pages@v4
         
