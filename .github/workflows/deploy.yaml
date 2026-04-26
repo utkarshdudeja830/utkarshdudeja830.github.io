@@ -19,10 +19,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout Repo # Download repo files onto the runner 
         uses: actions/checkout@v4
 
-      - name: Setup pages
+      - name: Setup pages # telling pages upload is coming  
         uses: actions/configure-pages@v5
 
       - name: Upload the artifacts to the runner
@@ -35,7 +35,7 @@ jobs:
     needs: build
     environment:
       name: github-pages
-      url: ${{steps.deployment.outputs.page url}}
+      url: ${{steps.deployment.outputs.page_url}}
     steps:
       - name: Deploying to pages
         id: deployment
