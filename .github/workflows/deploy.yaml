@@ -35,7 +35,7 @@ jobs:
     needs: build
     environment:
       name: github-pages
-      url: ${{steps.deployment.outputs.page_url}}
+      url: ${{steps.deployment.outputs.page url}}
     steps:
       - name: Deploying to pages
         id: deployment
