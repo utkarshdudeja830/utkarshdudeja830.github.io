@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Utkarsh Dudeja</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #f8f5f0;
+      --bg2: #efeae2;
+      --surface: #ffffff;
+      --border: #e0d8cc;
+      --text: #1a1714;
+      --text-muted: #6b6560;
+      --text-light: #9a948e;
+      --accent: #2a5c8a;
+      --accent-hover: #1d4166;
+      --accent-light: #ddeaf5;
+      --tag-bg: #e8eeF5;
+      --tag-text: #2a5c8a;
+      --nav-bg: rgba(248,245,240,0.92);
+      --shadow: 0 2px 20px rgba(0,0,0,0.07);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+    }
+    [data-theme="dark"] {
+      --bg: #111318;
+      --bg2: #191c24;
+      --surface: #1e2230;
+      --border: #2c3248;
+      --text: #e8eaf2;
+      --text-muted: #8e93a8;
+      --text-light: #5c6178;
+      --accent: #5b9bd5;
+      --accent-hover: #7ab4e8;
+      --accent-light: #1a2a3e;
+      --tag-bg: #1a2a3e;
+      --tag-text: #7ab4e8;
+      --nav-bg: rgba(17,19,24,0.93);
+      --shadow: 0 2px 20px rgba(0,0,0,0.3);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 max(3rem, calc((100% - 1200px)/2));
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.95rem; font-weight: 500; color: var(--text-muted);
+      text-decoration: none; letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* Theme toggle */
+    .theme-btn {
+      width: 42px; height: 24px; border-radius: 12px;
+      background: var(--border); border: none; cursor: pointer;
+      position: relative; transition: background 0.3s; flex-shrink: 0;
+    }
+    .theme-btn::after {
+      content: '';
+      position: absolute; top: 4px; left: 4px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--accent);
+      transition: transform 0.3s, background 0.3s;
+    }
+    [data-theme="dark"] .theme-btn::after { transform: translateX(18px); }
+    .theme-label { font-size: 0.82rem; color: var(--text-muted); margin-right: 0.4rem; }
+
+    /* ── LAYOUT ── */
+    main { padding-top: 70px; }
+    .section { padding: 90px max(3rem, calc((100% - 1200px)/2)); }
+    .section:nth-child(even) { background: var(--bg2); }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem; color: var(--text);
+      margin-bottom: 2.8rem;
+      letter-spacing: -0.03em;
+      position: relative; display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      display: block; height: 3px; width: 44px;
+      background: var(--accent); margin-top: 10px;
+      border-radius: 2px;
+    }
+
+    /* ── HERO / ABOUT ── */
+    #hero {
+      min-height: calc(100vh - 70px);
+      display: flex; align-items: center;
+      padding: 18px max(3rem, calc((100% - 1200px)/2)) 80px;
+      background: var(--bg);
+      position: relative;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 6rem;
+      width: 100%; align-items: start;
+    }
+
+    /* ── LEFT: Profile card ── */
+    .hero-left {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: flex-start; text-align: center;
+      padding: 0;
+      position: sticky; top: 212px;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-avatar {
+      width: 220px; height: 220px; border-radius: 50%;
+      background: var(--bg2); border: 4px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; flex-shrink: 0;
+      box-shadow: var(--shadow-lg);
+      font-family: 'DM Serif Display', serif;
+      font-size: 4.5rem; color: var(--accent);
+      margin-bottom: 1.8rem;
+    }
+    .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-card-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.7rem; color: var(--text);
+      letter-spacing: -0.02em; margin-bottom: 0.35rem; line-height: 1.2;
+    }
+    .hero-card-role {
+      font-size: 0.95rem; color: var(--text-muted);
+      margin-bottom: 0.25rem; font-weight: 400;
+    }
+    .hero-card-org {
+      font-size: 1rem; color: var(--accent);
+      font-weight: 600; margin-bottom: 1.8rem;
+    }
+    /* Icon-only social row */
+    .social-icons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .social-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 9px;
+      color: var(--text-muted);
+      background: var(--surface); border: 1px solid var(--border);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .social-icon:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .social-icon svg { flex-shrink: 0; }
+
+    /* ── RIGHT: About content ── */
+    .hero-right {
+      padding: 0;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .about-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem; color: var(--text);
+      letter-spacing: -0.03em; margin-bottom: 1.8rem;
+    }
+    .about-highlight {
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px; padding: 1.1rem 1.6rem;
+      font-size: 1rem; color: var(--text-muted);
+      margin-bottom: 2rem; line-height: 1.7;
+    }
+    .about-highlight strong { color: var(--text); }
+    .about-highlight a { color: var(--accent); text-decoration: none; }
+    .about-highlight a:hover { text-decoration: underline; }
+    .about-body {
+      font-size: 1.1rem; color: var(--text-muted);
+      line-height: 1.9; margin-bottom: 1.5rem;
+    }
+    .about-body a { color: var(--accent); text-decoration: none; }
+    .about-body a:hover { text-decoration: underline; }
+    .about-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.2rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.8rem 1.8rem; border-radius: 9px;
+      font-size: 0.95rem; font-weight: 500;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(42,92,138,0.25); }
+    .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+    .btn-outline:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    /* kept for contact section */
+    .social-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1.1rem; border-radius: 7px;
+      font-size: 0.88rem; font-weight: 500; color: var(--text-muted);
+      text-decoration: none; background: var(--surface);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .social-btn:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow); }
+
+    /* ── NEWS ── */
+    .news-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .news-list li {
+      display: flex; gap: 1rem; align-items: baseline;
+      padding: 0.85rem 1.2rem; border-radius: 10px;
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 0.97rem; transition: box-shadow 0.2s;
+    }
+    .news-list li:hover { box-shadow: var(--shadow); }
+    .news-date { color: var(--accent); font-weight: 600; white-space: nowrap; font-size: 0.85rem; min-width: 110px; }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { display: flex; flex-direction: column; gap: 1.6rem; }
+    .pub-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.7rem 2rem;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .pub-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .pub-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--text); margin-bottom: 0.4rem; line-height: 1.35; }
+    .pub-authors { font-size: 0.93rem; color: var(--text-muted); margin-bottom: 0.35rem; }
+    .pub-authors strong { color: var(--text); font-weight: 600; }
+    .pub-venue { font-size: 0.87rem; color: var(--text-light); font-style: italic; margin-bottom: 1rem; }
+    .pub-venue em { color: var(--accent); font-style: normal; font-weight: 600; }
+    .pub-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .tag-link {
+      font-size: 0.82rem; font-weight: 500; padding: 0.32rem 0.85rem;
+      border-radius: 6px; background: var(--tag-bg); color: var(--tag-text);
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .tag-link:hover { opacity: 0.75; }
+
+    /* ── PROJECTS ── */
+    .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.6rem; }
+    .proj-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.7rem; display: flex; flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .proj-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .proj-icon {
+      width: 48px; height: 48px; border-radius: 11px;
+      background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.1rem;
+    }
+    .proj-title { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--text); margin-bottom: 0.45rem; }
+    .proj-desc { font-size: 0.93rem; color: var(--text-muted); line-height: 1.65; flex: 1; margin-bottom: 1.1rem; }
+    .tag { font-size: 0.78rem; font-weight: 500; padding: 0.22rem 0.65rem; border-radius: 5px; background: var(--tag-bg); color: var(--tag-text); }
+    .proj-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1.1rem; }
+    .proj-links { display: flex; gap: 0.6rem; margin-top: auto; }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .exp-list::before {
+      content: ''; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px;
+      background: var(--border); border-radius: 1px;
+    }
+    .exp-item { display: flex; gap: 2rem; padding-bottom: 2.8rem; position: relative; }
+    .exp-dot {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: 5px;
+      box-shadow: 0 0 0 4px var(--accent-light);
+      z-index: 1;
+    }
+    .exp-body { flex: 1; }
+    .exp-role { font-weight: 600; font-size: 1.1rem; color: var(--text); }
+    .exp-company { color: var(--accent); font-size: 0.95rem; font-weight: 500; margin-bottom: 0.15rem; }
+    .exp-date { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.7rem; }
+    .exp-desc { font-size: 0.97rem; color: var(--text-muted); line-height: 1.7; }
+    .exp-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 0.8rem; }
+
+    /* ── EDUCATION ── */
+    .edu-list { display: flex; flex-direction: column; gap: 1.4rem; }
+    .edu-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.7rem 2rem;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .edu-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .edu-degree { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--text); margin-bottom: 0.3rem; }
+    .edu-school { color: var(--accent); font-size: 0.97rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .edu-date { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.6rem; }
+    .edu-desc { font-size: 0.97rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    .contact-inner { max-width: 580px; margin: 0 auto; }
+    .contact-inner p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
+    .contact-email {
+      display: inline-block; font-family: 'DM Serif Display', serif;
+      font-size: 1.65rem; color: var(--accent); text-decoration: none;
+      border-bottom: 2px solid var(--accent); padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .contact-email:hover { opacity: 0.7; }
+    .contact-social { display: flex; justify-content: center; gap: 1rem; margin-top: 2.2rem; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem max(3rem, calc((100% - 1200px)/2));
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.85rem; color: var(--text-light);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-left { position: static; }
+      .hero-avatar { width: 160px; height: 160px; font-size: 3.5rem; }
+      .section { max-width: 100%; }
+      .nav-links a:not([id]) { display: none; }
+      .proj-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Utkarsh Dudeja</a>
+  <div class="nav-links">
+    <a href="#hero">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+    <span class="theme-label" id="theme-label">Light</span>
+    <button class="theme-btn" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode"></button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO / ABOUT -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <!-- LEFT SIDEBAR: sticky profile card -->
+      <div class="hero-left">
+        <div class="hero-avatar">
+          <img src="https://avatars.githubusercontent.com/u/72224429" alt="Utkarsh Dudeja">
+        </div>
+        <p class="hero-card-name">Utkarsh Dudeja</p>
+        <p class="hero-card-role">Associate Software Development Engineer</p>
+        <p class="hero-card-org">WhizHack Technologies</p>
+        <div class="social-icons">
+          <a class="social-icon" href="mailto:utkarsh.dudeja@outlook.com" title="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          </a>
+          <a class="social-icon" href="https://github.com/utkarshdudeja830" target="_blank" rel="noopener" title="GitHub">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a class="social-icon" href="https://www.linkedin.com/in/utkarsh-dudeja-6a9459200" target="_blank" rel="noopener" title="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a class="social-icon" href="resume.pdf" title="Download CV" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: About content -->
+      <div class="hero-right">
+        <h2 class="about-title">About</h2>
+
+        <!-- <div class="about-highlight">
+          <strong>Open to opportunities:</strong> I'm actively seeking roles at the intersection of research and engineering — building systems that push boundaries. Feel free to check out my <a href="resume.pdf">CV</a> and reach out.
+        </div> -->
+
+        <p class="about-body">
+          I am an Associate Software Development Engineer at <a href="https://whizhack.com" target="_blank" rel="noopener">WhizHack Technologies</a>, working at the intersection of cybersecurity and applied research — designing and building production-ready systems across intrusion detection, asset discovery, and threat intelligence for ICS/OT environments. My work spans the full arc from research to deployment — from low-level network configuration and kernel-level routing, building memory-safe protocol inspection modules, to shipping production-grade detection and discovery systems.
+        </p>
+
+        <p class="about-body">
+          My current focus is on anomaly detection and inference in ICS/SCADA networks — systems where the signals are subtle, the stakes are high, and off-the-shelf solutions fall short. I am IEEE published, and have a research paper and patent in progress in this space.
+        </p>
+
+        <p class="about-body">
+            Beyond the immediate work, I am drawn to fundamentally hard problems — the kind that demand deep thinking and careful engineering.
+        </p>
+
+        <div class="about-ctas">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-outline" href="#publications">Publications</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="section" id="publications">
+    <h2 class="section-title">Publications</h2>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <p class="pub-title">Decoding Emotions: Emotion Classification from EEG Brain Signals using AI</p>
+        <p class="pub-authors"><strong>Utkarsh Dudeja</strong>; Sanjay Kumar Dubey</p>
+        <p class="pub-venue">Published in <em>IEEE</em> · Also indexed on <em>Harvard ADS</em> · 2023</p>
+        <div class="pub-links">
+          <a class="tag-link" href="https://ui.adsabs.harvard.edu/abs/2023elec...10..214D/abstract" target="_blank" rel="noopener">Harvard ADS</a>
+          <a class="tag-link" href="https://ieeexplore.ieee.org/document/10434423/" target="_blank" rel="noopener">IEEE Xplore</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-body">
+          <p class="exp-role">Associate Software Development Engineer</p>
+          <p class="exp-company">WhizHack Technologies</p>
+          <p class="exp-date">Apr 2024 – Present · Full-time</p>
+          <p class="exp-desc">Independently driven multiple systems end-to-end — from research and architecture through to production deployment — with the most significant being a multi-layer anomaly detection and inference engine for ICS/OT networks, capable of surfacing highly subtle deviations such as a single unauthorized write at an odd hour, validated on real PLC hardware across industrial protocols. A research paper and patent are currently in progress for this work.</p>
+          <div class="exp-tags">
+            <span class="tag">Anomaly Detection</span><span class="tag">Secure Systems</span><span class="tag">Time-Series Analysis</span><span class="tag">Network Security</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-body">
+          <p class="exp-role">Software Development Intern</p>
+          <p class="exp-company">WhizHack Technologies</p>
+          <p class="exp-date">Jan 2024 – Mar 2024 · Internship</p>
+          <p class="exp-desc">Contributed to the core R&amp;D team building security systems. Worked with OpenSearch, Fluentd, and Kibana for large-scale security data analysis and visualisation.</p>
+          <div class="exp-tags">
+            <span class="tag">OpenSearch</span><span class="tag">Fluentd</span><span class="tag">Kibana</span><span class="tag">IPS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-body">
+          <p class="exp-role">Full-Stack Developer Intern</p>
+          <p class="exp-company">Amity Innovation Incubator</p>
+          <p class="exp-date">May 2023 – Jul 2023 · Internship</p>
+          <p class="exp-desc">Led end-to-end development of the AppLab platform and modernised the incubator's Angular-based web presence — from architecture and implementation to debugging and performance optimisation.</p>
+          <div class="exp-tags">
+            <span class="tag">Angular</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">JavaScript</span><span class="tag">SQL</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-icon">🚀</div>
+        <h3 class="proj-title">Project Alpha</h3>
+        <p class="proj-desc">A brief description of what this project does, the problem it solves, and any notable features or outcomes. Keep it punchy and specific.</p>
+        <div class="proj-tags">
+          <span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">REST API</span>
+        </div>
+        <div class="proj-links">
+          <a class="tag-link" href="#">GitHub</a>
+          <a class="tag-link" href="#">Live Demo</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon">🔧</div>
+        <h3 class="proj-title">Developer Tool Beta</h3>
+        <p class="proj-desc">Describe what this tool does. Who uses it? What does it automate or improve? Highlight impact — e.g. "reduces build times by 40%".</p>
+        <div class="proj-tags">
+          <span class="tag">Python</span><span class="tag">CLI</span><span class="tag">Docker</span>
+        </div>
+        <div class="proj-links">
+          <a class="tag-link" href="#">GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon">📊</div>
+        <h3 class="proj-title">Analytics Dashboard</h3>
+        <p class="proj-desc">A real-time dashboard for monitoring [system/metric]. Built with performance in mind — handles thousands of events per second with sub-100ms latency.</p>
+        <div class="proj-tags">
+          <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">WebSocket</span>
+        </div>
+        <div class="proj-links">
+          <a class="tag-link" href="#">GitHub</a>
+          <a class="tag-link" href="#">Live Demo</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon">🔐</div>
+        <h3 class="proj-title">Auth Service</h3>
+        <p class="proj-desc">A lightweight, zero-dependency authentication microservice. Supports OAuth 2.0, JWT, and session-based auth with role management.</p>
+        <div class="proj-tags">
+          <span class="tag">Go</span><span class="tag">JWT</span><span class="tag">OAuth</span>
+        </div>
+        <div class="proj-links">
+          <a class="tag-link" href="#">GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-list">
+
+      <div class="edu-card">
+        <p class="edu-degree">B.Tech in CSE with Hons. Specialisation in AI &amp; ML</p>
+        <p class="edu-school">Amity University, Uttar Pradesh </p>
+        <p class="edu-date">2020 – 2024</p>
+        <p class="edu-desc">Focused on machine learning, neural networks, and intelligent systems — a foundation that directly informs my approach to building research-driven software. Active in applied projects bridging theory and real-world deployment with electives in Cryptography & Encryption, Cybersecurity, and Cloud Computing — areas that directly shaped the direction of my work.</p>
+        <!-- <span class="tag">OpenSearch</span> -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="contact-inner">
+      <h2 class="section-title" style="display:block;">Get In Touch</h2>
+      <p>Whether it's a collaboration, a research conversation, or an opportunity — my inbox is always open.</p>
+      <a class="contact-email" href="mailto:utkarsh.dudeja@outlook.com">utkarsh.dudeja@outlook.com</a>
+      <div class="contact-social">
+        <a class="social-btn" href="https://github.com/utkarshdudeja830" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a class="social-btn" href="https://www.linkedin.com/in/utkarsh-dudeja-6a9459200" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a class="social-btn" href="https://ieeexplore.ieee.org/author/133618399960955" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          IEEE
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© 2026 Utkarsh Dudeja</span>
+  <span>Built with ♥ — hosted on GitHub Pages</span>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  const label = document.getElementById('theme-label');
+
+  // Persist preference
+  const saved = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-theme', saved);
+  label.textContent = saved === 'dark' ? 'Dark' : 'Light';
+
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    label.textContent = next === 'dark' ? 'Dark' : 'Light';
+    localStorage.setItem('theme', next);
+  });
+</script>
+
+</body>
+</html>
