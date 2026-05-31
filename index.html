@@ -42,9 +42,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
@@ -54,7 +52,7 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: var(--nav-bg);
@@ -79,8 +77,6 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--accent); }
-
-    /* Theme toggle */
     .theme-btn {
       width: 42px; height: 24px; border-radius: 12px;
       background: var(--border); border: none; cursor: pointer;
@@ -96,7 +92,7 @@
     [data-theme="dark"] .theme-btn::after { transform: translateX(18px); }
     .theme-label { font-size: 0.82rem; color: var(--text-muted); margin-right: 0.4rem; }
 
-    /* ── LAYOUT ── */
+    /* LAYOUT */
     main { padding-top: 70px; }
     .section { padding: 90px max(3rem, calc((100% - 1200px)/2)); }
     .section:nth-child(even) { background: var(--bg2); }
@@ -114,7 +110,7 @@
       border-radius: 2px;
     }
 
-    /* ── HERO / ABOUT ── */
+    /* HERO */
     #hero {
       min-height: calc(100vh - 70px);
       display: flex; align-items: center;
@@ -128,8 +124,6 @@
       gap: 6rem;
       width: 100%; align-items: start;
     }
-
-    /* ── LEFT: Profile card ── */
     .hero-left {
       display: flex; flex-direction: column; align-items: center;
       justify-content: flex-start; text-align: center;
@@ -153,15 +147,8 @@
       font-size: 1.7rem; color: var(--text);
       letter-spacing: -0.02em; margin-bottom: 0.35rem; line-height: 1.2;
     }
-    .hero-card-role {
-      font-size: 0.95rem; color: var(--text-muted);
-      margin-bottom: 0.25rem; font-weight: 400;
-    }
-    .hero-card-org {
-      font-size: 1rem; color: var(--accent);
-      font-weight: 600; margin-bottom: 1.8rem;
-    }
-    /* Icon-only social row */
+    .hero-card-role { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.25rem; font-weight: 400; }
+    .hero-card-org { font-size: 1rem; color: var(--accent); font-weight: 600; margin-bottom: 1.8rem; }
     .social-icons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
     .social-icon {
       display: inline-flex; align-items: center; justify-content: center;
@@ -172,31 +159,13 @@
     }
     .social-icon:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
     .social-icon svg { flex-shrink: 0; }
-
-    /* ── RIGHT: About content ── */
-    .hero-right {
-      padding: 0;
-      animation: fadeUp 0.7s 0.1s ease both;
-    }
+    .hero-right { padding: 0; animation: fadeUp 0.7s 0.1s ease both; }
     .about-title {
       font-family: 'DM Serif Display', serif;
       font-size: 3rem; color: var(--text);
       letter-spacing: -0.03em; margin-bottom: 1.8rem;
     }
-    .about-highlight {
-      background: var(--surface); border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      border-radius: 10px; padding: 1.1rem 1.6rem;
-      font-size: 1rem; color: var(--text-muted);
-      margin-bottom: 2rem; line-height: 1.7;
-    }
-    .about-highlight strong { color: var(--text); }
-    .about-highlight a { color: var(--accent); text-decoration: none; }
-    .about-highlight a:hover { text-decoration: underline; }
-    .about-body {
-      font-size: 1.1rem; color: var(--text-muted);
-      line-height: 1.9; margin-bottom: 1.5rem;
-    }
+    .about-body { font-size: 1.1rem; color: var(--text-muted); line-height: 1.9; margin-bottom: 1.5rem; }
     .about-body a { color: var(--accent); text-decoration: none; }
     .about-body a:hover { text-decoration: underline; }
     .about-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.2rem; }
@@ -211,8 +180,6 @@
     .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(42,92,138,0.25); }
     .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
     .btn-outline:hover { background: var(--accent-light); transform: translateY(-1px); }
-
-    /* kept for contact section */
     .social-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
     .social-btn {
       display: inline-flex; align-items: center; gap: 0.4rem;
@@ -224,7 +191,7 @@
     }
     .social-btn:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow); }
 
-    /* ── NEWS ── */
+    /* NEWS */
     .news-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
     .news-list li {
       display: flex; gap: 1rem; align-items: baseline;
@@ -235,7 +202,7 @@
     .news-list li:hover { box-shadow: var(--shadow); }
     .news-date { color: var(--accent); font-weight: 600; white-space: nowrap; font-size: 0.85rem; min-width: 110px; }
 
-    /* ── PUBLICATIONS ── */
+    /* PUBLICATIONS */
     .pub-list { display: flex; flex-direction: column; gap: 1.6rem; }
     .pub-card {
       background: var(--surface); border: 1px solid var(--border);
@@ -253,11 +220,16 @@
       font-size: 0.82rem; font-weight: 500; padding: 0.32rem 0.85rem;
       border-radius: 6px; background: var(--tag-bg); color: var(--tag-text);
       text-decoration: none; transition: opacity 0.2s;
+      display: inline-flex; align-items: center; gap: 0.35rem;
     }
     .tag-link:hover { opacity: 0.75; }
 
-    /* ── PROJECTS ── */
-    .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.6rem; }
+    /* PROJECTS — single row, 3 equal columns */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
     .proj-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 14px; padding: 1.7rem; display: flex; flex-direction: column;
@@ -273,9 +245,9 @@
     .proj-desc { font-size: 0.93rem; color: var(--text-muted); line-height: 1.65; flex: 1; margin-bottom: 1.1rem; }
     .tag { font-size: 0.78rem; font-weight: 500; padding: 0.22rem 0.65rem; border-radius: 5px; background: var(--tag-bg); color: var(--tag-text); }
     .proj-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1.1rem; }
-    .proj-links { display: flex; gap: 0.6rem; margin-top: auto; }
+    .proj-links { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: auto; }
 
-    /* ── EXPERIENCE ── */
+    /* EXPERIENCE */
     .exp-list { display: flex; flex-direction: column; gap: 0; position: relative; }
     .exp-list::before {
       content: ''; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px;
@@ -295,7 +267,7 @@
     .exp-desc { font-size: 0.97rem; color: var(--text-muted); line-height: 1.7; }
     .exp-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 0.8rem; }
 
-    /* ── EDUCATION ── */
+    /* EDUCATION */
     .edu-list { display: flex; flex-direction: column; gap: 1.4rem; }
     .edu-card {
       background: var(--surface); border: 1px solid var(--border);
@@ -308,7 +280,7 @@
     .edu-date { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.6rem; }
     .edu-desc { font-size: 0.97rem; color: var(--text-muted); line-height: 1.7; }
 
-    /* ── CONTACT ── */
+    /* CONTACT */
     #contact { text-align: center; }
     .contact-inner { max-width: 580px; margin: 0 auto; }
     .contact-inner p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
@@ -321,7 +293,7 @@
     .contact-email:hover { opacity: 0.7; }
     .contact-social { display: flex; justify-content: center; gap: 1rem; margin-top: 2.2rem; flex-wrap: wrap; }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
       padding: 2rem max(3rem, calc((100% - 1200px)/2));
       border-top: 1px solid var(--border);
@@ -329,7 +301,6 @@
       font-size: 0.85rem; color: var(--text-light);
     }
 
-    /* Animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -337,6 +308,9 @@
     .fade-up { opacity: 0; animation: fadeUp 0.6s ease forwards; }
 
     /* Responsive */
+    @media (max-width: 1100px) {
+      .proj-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-left { position: static; }
@@ -358,6 +332,7 @@
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
     <a href="#contact">Contact</a>
     <span class="theme-label" id="theme-label">Light</span>
     <button class="theme-btn" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode"></button>
@@ -369,8 +344,6 @@
   <!-- HERO / ABOUT -->
   <section id="hero">
     <div class="hero-inner">
-
-      <!-- LEFT SIDEBAR: sticky profile card -->
       <div class="hero-left">
         <div class="hero-avatar">
           <img src="https://avatars.githubusercontent.com/u/72224429" alt="Utkarsh Dudeja">
@@ -391,35 +364,33 @@
           <a class="social-icon" href="resume.pdf" title="Download CV" download>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
           </a>
+          <a class="social-icon" href="https://leetcode.com/u/user1949Wk/" target="_blank" rel="noopener" title="LeetCode">
+            <!-- LeetCode logo -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+          </a>
+          <a class="social-icon" href="https://www.deep-ml.com/profile/uv5BZEMOiVfQgZ5WL7wapy720S43" target="_blank" rel="noopener" title="Deep-ML">
+            <!-- Brain/ML icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.44-4.16Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.44-4.16Z"/></svg>
+          </a>
         </div>
       </div>
 
-      <!-- RIGHT: About content -->
       <div class="hero-right">
         <h2 class="about-title">About</h2>
-
-        <!-- <div class="about-highlight">
-          <strong>Open to opportunities:</strong> I'm actively seeking roles at the intersection of research and engineering — building systems that push boundaries. Feel free to check out my <a href="resume.pdf">CV</a> and reach out.
-        </div> -->
-
         <p class="about-body">
           I am an Associate Software Development Engineer at <a href="https://whizhack.com" target="_blank" rel="noopener">WhizHack Technologies</a>, working at the intersection of cybersecurity and applied research — designing and building production-ready systems across intrusion detection, asset discovery, and threat intelligence for ICS/OT environments. My work spans the full arc from research to deployment — from low-level network configuration and kernel-level routing, building memory-safe protocol inspection modules, to shipping production-grade detection and discovery systems.
         </p>
-
         <p class="about-body">
           My current focus is on anomaly detection and inference in ICS/SCADA networks — systems where the signals are subtle, the stakes are high, and off-the-shelf solutions fall short. I am IEEE published, and have a research paper and patent in progress in this space.
         </p>
-
         <p class="about-body">
-            Beyond the immediate work, I am drawn to fundamentally hard problems — the kind that demand deep thinking and careful engineering.
+          Beyond the immediate work, I am drawn to fundamentally hard problems — the kind that demand deep thinking and careful engineering.
         </p>
-
         <div class="about-ctas">
           <a class="btn btn-primary" href="#contact">Get in touch</a>
           <a class="btn btn-outline" href="#publications">Publications</a>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -427,17 +398,15 @@
   <section class="section" id="publications">
     <h2 class="section-title">Publications</h2>
     <div class="pub-list">
-
       <div class="pub-card">
         <p class="pub-title">Decoding Emotions: Emotion Classification from EEG Brain Signals using AI</p>
         <p class="pub-authors"><strong>Utkarsh Dudeja</strong>; Sanjay Kumar Dubey</p>
-        <p class="pub-venue">Published in <em>IEEE</em> · Also indexed on <em>Harvard ADS</em> · 2023</p>
+        <p class="pub-venue">Published in <em>IEEE</em>· 2023</p>
         <div class="pub-links">
-          <a class="tag-link" href="https://ui.adsabs.harvard.edu/abs/2023elec...10..214D/abstract" target="_blank" rel="noopener">Harvard ADS</a>
           <a class="tag-link" href="https://ieeexplore.ieee.org/document/10434423/" target="_blank" rel="noopener">IEEE Xplore</a>
+          <a class="tag-link" href="https://ui.adsabs.harvard.edu/abs/2023elec...10..214D/abstract" target="_blank" rel="noopener"> ADS</a>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -445,7 +414,6 @@
   <section class="section" id="experience">
     <h2 class="section-title">Experience</h2>
     <div class="exp-list">
-
       <div class="exp-item">
         <div class="exp-dot"></div>
         <div class="exp-body">
@@ -458,7 +426,6 @@
           </div>
         </div>
       </div>
-
       <div class="exp-item">
         <div class="exp-dot"></div>
         <div class="exp-body">
@@ -471,7 +438,6 @@
           </div>
         </div>
       </div>
-
       <div class="exp-item">
         <div class="exp-dot"></div>
         <div class="exp-body">
@@ -484,62 +450,56 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- PROJECTS — 3 columns, single row -->
   <section class="section" id="projects">
     <h2 class="section-title">Projects</h2>
     <div class="proj-grid">
 
       <div class="proj-card">
-        <div class="proj-icon">🚀</div>
-        <h3 class="proj-title">Project Alpha</h3>
-        <p class="proj-desc">A brief description of what this project does, the problem it solves, and any notable features or outcomes. Keep it punchy and specific.</p>
+        <div class="proj-icon">🛰️</div>
+        <h3 class="proj-title">ATLAS</h3>
+        <p class="proj-desc">An agentic SOC pipeline that correlates Wazuh and Suricata telemetry into a single attack timeline, enriches it with threat intelligence, and drives an automated triage decision. Deterministic where it matters; a locally hosted LLM only writes the analyst summary. Built on logs from a live Raspberry Pi sensor setup.</p>
         <div class="proj-tags">
-          <span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">REST API</span>
+          <span class="tag">LangGraph</span><span class="tag">Ollama</span><span class="tag">Wazuh</span><span class="tag">Suricata</span><span class="tag">Threat Intel</span>
         </div>
         <div class="proj-links">
-          <a class="tag-link" href="#">GitHub</a>
-          <a class="tag-link" href="#">Live Demo</a>
+          <a class="tag-link" href="https://github.com/utkarshdudeja830/atlas" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View Code
+          </a>
         </div>
       </div>
 
       <div class="proj-card">
-        <div class="proj-icon">🔧</div>
-        <h3 class="proj-title">Developer Tool Beta</h3>
-        <p class="proj-desc">Describe what this tool does. Who uses it? What does it automate or improve? Highlight impact — e.g. "reduces build times by 40%".</p>
+        <div class="proj-icon">🔍</div>
+        <h3 class="proj-title">RAG Question Answering</h3>
+        <p class="proj-desc">A retrieval-augmented question-answering system over NASA mission documents. Splits and embeds documents into a FAISS vector store, retrieves the most relevant chunks, and answers with a 4-bit quantized Mistral-7B grounded in the retrieved context.</p>
         <div class="proj-tags">
-          <span class="tag">Python</span><span class="tag">CLI</span><span class="tag">Docker</span>
+          <span class="tag">RAG</span><span class="tag">FAISS</span><span class="tag">LangChain</span><span class="tag">Mistral-7B</span>
         </div>
         <div class="proj-links">
-          <a class="tag-link" href="#">GitHub</a>
+          <a class="tag-link" href="https://github.com/utkarshdudeja830/LLM-based-Question-Answering-System" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View Code
+          </a>
         </div>
       </div>
 
       <div class="proj-card">
-        <div class="proj-icon">📊</div>
-        <h3 class="proj-title">Analytics Dashboard</h3>
-        <p class="proj-desc">A real-time dashboard for monitoring [system/metric]. Built with performance in mind — handles thousands of events per second with sub-100ms latency.</p>
+        <div class="proj-icon">🦀</div>
+        <h3 class="proj-title">Rust Projects</h3>
+        <p class="proj-desc">A progression through Rust, from fundamentals to systems-level work — a Caesar cipher, a port sniffer, and file I/O with mutexes and async. Each is a standalone crate, built while learning the language properly.</p>
         <div class="proj-tags">
-          <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">WebSocket</span>
+          <span class="tag">Rust</span><span class="tag">Systems</span><span class="tag">Async</span><span class="tag">CLI</span>
         </div>
         <div class="proj-links">
-          <a class="tag-link" href="#">GitHub</a>
-          <a class="tag-link" href="#">Live Demo</a>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-icon">🔐</div>
-        <h3 class="proj-title">Auth Service</h3>
-        <p class="proj-desc">A lightweight, zero-dependency authentication microservice. Supports OAuth 2.0, JWT, and session-based auth with role management.</p>
-        <div class="proj-tags">
-          <span class="tag">Go</span><span class="tag">JWT</span><span class="tag">OAuth</span>
-        </div>
-        <div class="proj-links">
-          <a class="tag-link" href="#">GitHub</a>
+          <a class="tag-link" href="https://github.com/utkarshdudeja830/Rust-Projects" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View Code
+          </a>
         </div>
       </div>
 
@@ -550,13 +510,31 @@
   <section class="section" id="education">
     <h2 class="section-title">Education</h2>
     <div class="edu-list">
-
       <div class="edu-card">
         <p class="edu-degree">B.Tech in CSE with Hons. Specialisation in AI &amp; ML</p>
-        <p class="edu-school">Amity University, Uttar Pradesh </p>
+        <p class="edu-school">Amity University, Uttar Pradesh</p>
         <p class="edu-date">2020 – 2024</p>
         <p class="edu-desc">Focused on machine learning, neural networks, and intelligent systems — a foundation that directly informs my approach to building research-driven software. Active in applied projects bridging theory and real-world deployment with electives in Cryptography & Encryption, Cybersecurity, and Cloud Computing — areas that directly shaped the direction of my work.</p>
-        <!-- <span class="tag">OpenSearch</span> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certifications">
+    <h2 class="section-title">Certifications</h2>
+    <div class="edu-list">
+
+      <div class="edu-card" style="display:flex; align-items:center; gap:1.6rem;">
+        <div style="flex-shrink:0; width:48px; height:48px; border-radius:11px; background:var(--accent-light); display:flex; align-items:center; justify-content:center; font-size:1.5rem;">🦜</div>
+        <div style="flex:1;">
+          <p class="edu-degree">English Proficiency Test</p>
+          <p class="edu-school">Duolingo English Test</p>
+          <p class="edu-date">2024</p>
+        </div>
+        <a class="tag-link" href="https://certs.duolingo.com/f60ex13hsjbta3zi" target="_blank" rel="noopener" style="flex-shrink:0; display:inline-flex; align-items:center; gap:0.4rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Certificate
+        </a>
       </div>
 
     </div>
@@ -589,19 +567,15 @@
 
 <footer>
   <span>© 2026 Utkarsh Dudeja</span>
-  <span>Built with ♥ — hosted on GitHub Pages</span>
 </footer>
 
 <script>
   const html = document.documentElement;
   const btn = document.getElementById('themeToggle');
   const label = document.getElementById('theme-label');
-
-  // Persist preference
   const saved = localStorage.getItem('theme') || 'light';
   html.setAttribute('data-theme', saved);
   label.textContent = saved === 'dark' ? 'Dark' : 'Light';
-
   btn.addEventListener('click', () => {
     const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
